@@ -1,5 +1,5 @@
 ![Version](https://img.shields.io/badge/Version-0.0.1-blue.svg)
-![MinGhostVersion](https://img.shields.io/badge/Min%20Ghost%20v.-%3E%3D%200.8.x-red.svg)
+![MinGhostVersion](https://img.shields.io/badge/Min%20Ghost%20v.-%3E%3D%200.9.0-red.svg)
 
 #GhostScripts
 Scripts cobbled together to do some recurring tasks on Ghost
@@ -11,9 +11,10 @@ They may misbehave, not be portable, or otherwise un-perfect.
 They do work well however ; should you want to use or modify them, please feel free to do so.
 
 ##General
-For now, two (2) scripts are available:
+For now, three (3) scripts are available:
 - massdelete.sh
 - masspublish.sh
+- apirequest.sh
 
 Both are made to be executed from the command line, and can take several arguments.
 
@@ -25,7 +26,7 @@ Please be aware the the ghost API is still under development, and that some filt
 
 You should probably do a backup first. Really.
 
-````sh
+````shell
 	massdelete.sh [[-a (http://blog.mysite.eu ghostlogin ghostpassword customfilters)] [-f]] | [-h]]
 ````
 
@@ -36,6 +37,16 @@ By default, Masspublish asks you for your blog URL, Login, Password, and optiona
 If no custom filters are set, masspublish will publish ALL the posts currently in a draft state.
 Please be aware the the ghost API is still under development, and that some filters which should be correct will not have the intended effect. For example, filtering by author to query which posts you will publish will not work as of Ghost version 0.9.0.
 
-````sh
+````shell
 masspublish.sh [-a (http://blog.mysite.eu ghostlogin ghostpassword customfilters)] | [-h]]
+````
+
+
+##APIRequest.sh
+
+APIRequest simplifies testing the API via the command line by getting the bearertoken for you and having a defined structure for the cURL request.
+Mainly used for testing purposes.
+
+````shell
+APIrequest.sh [-a (http://blog.mysite.eu ghostlogin ghostpassword RequestType Endpoint AdditionalInfo)]
 ````
