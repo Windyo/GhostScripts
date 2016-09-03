@@ -44,10 +44,10 @@ function checkstatus
   if [ -z "$CustomFilters" ]
     then
       echo "Using default filters"
-      declare -a PostsToDelete=`curl --header "Authorization: Bearer $BearerToken" $BlogAdress/ghost/api/v0.1/posts/?filter=\(author_id:$Author\) | jq '.posts[] | .id'`
+      declare -a PostsToDelete=`curl --header "Authorization: Bearer $BearerToken" $BlogAdress/ghost/api/v0.1/posts/?limit=all\&filter=\(author_id:$Author\) | jq '.posts[] | .id'`
     else
       echo "Using custom filters"
-      declare -a PostsToDelete=`curl --header "Authorization: Bearer $BearerToken" $BlogAdress/ghost/api/v0.1/posts/?filter=\($CustomFilters\) | jq '.posts[] | .id'`
+      declare -a PostsToDelete=`curl --header "Authorization: Bearer $BearerToken" $BlogAdress/ghost/api/v0.1/posts/?limit=all\&filter=\($CustomFilters\) | jq '.posts[] | .id'`
   fi
   echo "Posts to Delete ids: $PostsToDelete"
 
